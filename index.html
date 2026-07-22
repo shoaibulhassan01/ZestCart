@@ -1,13 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/home.css">
-    <title>ZestCart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZestCart — Shopping, Freshly Squeezed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="./css/home.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hello world</h1>
-    <script src="./js/home.js"></script>
+
+<div class="topstrip">
+  <div class="wrap">
+    <div class="strip-marquee" id="marquee">
+      <span><span class="dot"></span>Free delivery across Lahore on orders over Rs. 2,000</span>
+      <span><span class="dot"></span>Flat 20% off your first squeeze — code FRESH20</span>
+      <span><span class="dot"></span>Cash on delivery available nationwide</span>
+      <span><span class="dot"></span>Free delivery across Lahore on orders over Rs. 2,000</span>
+      <span><span class="dot"></span>Flat 20% off your first squeeze — code FRESH20</span>
+      <span><span class="dot"></span>Cash on delivery available nationwide</span>
+    </div>
+    <div class="topstrip-links">
+      <a href="#">Sell on ZestCart</a>
+      <a href="#">Track Order</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="#" class="logo">
+        <span class="mark">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="22" r="14" fill="#D7F900"/>
+            <path class="peel" d="M20 8 C 24 4, 30 4, 30 4 C 30 4, 28 10, 22 12 Z" fill="#FF5A36"/>
+            <circle cx="15" cy="18" r="1.6" fill="#0b1310"/>
+            <circle cx="24" cy="17" r="1.6" fill="#0b1310"/>
+            <circle cx="20" cy="24" r="1.6" fill="#0b1310"/>
+          </svg>
+        </span>
+        <span class="wordmark">Zest<span class="zest">Cart</span></span>
+      </a>
+
+      <form class="search-form" onsubmit="return false;">
+        <select>
+          <option>All</option>
+          <option>Electronics</option>
+          <option>Fashion</option>
+          <option>Home</option>
+          <option>Beauty</option>
+        </select>
+        <input type="text" placeholder="Search for products, brands and more...">
+        <button aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+
+      <nav class="nav-actions">
+        <a href="#" class="nav-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+          <span class="label">Wishlist</span>
+        </a>
+        <a href="#" class="nav-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          <span class="label">Account</span>
+        </a>
+        <a href="#" class="nav-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
+          <span class="label">Cart</span>
+          <span class="badge">3</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="cat-row">
+      <a href="#" class="hot">🔥 Today's Deals</a>
+      <span class="divider"></span>
+      <a href="#">Electronics</a>
+      <a href="#">Fashion</a>
+      <a href="#">Home & Living</a>
+      <a href="#">Beauty</a>
+      <a href="#">Grocery</a>
+      <a href="#">Sports</a>
+      <a href="#">Toys & Baby</a>
+      <a href="#">New Arrivals</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="seed">🍃</span> Lahore's freshest way to shop online</span>
+
+        <h1>
+          <span class="line"><span>Shopping,</span></span>
+          <span class="line"><span>freshly <em class="accent">squeezed</em></span></span>
+          <span class="line"><span>for you.</span></span>
+        </h1>
+
+        <p class="lede">
+          Thousands of deals across electronics, fashion, home and grocery — picked, packed and delivered fast. ZestCart makes shopping feel less like a chore and more like a treat.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#" class="btn-primary">
+            Start Shopping
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#" class="btn-ghost">
+            Explore Today's Deals →
+          </a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-item">
+            <div class="num"><span class="accent">40K+</span></div>
+            <div class="lbl">Products live</div>
+          </div>
+          <div class="trust-item">
+            <div class="num">4.8<span class="accent">★</span></div>
+            <div class="lbl">Average rating</div>
+          </div>
+          <div class="trust-item">
+            <div class="num">24<span class="accent">hr</span></div>
+            <div class="lbl">Express delivery</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="heroVisual">
+        <div class="burst">
+          <div class="burst-ring"></div>
+          <div class="burst-ring r2"></div>
+          <div class="citrus-core">
+            <div class="phone-glow"></div>
+            <div class="phone-mock">
+              <div class="screen">
+                <div class="notch"></div>
+                <div class="status"><span>9:41</span><span>●●●</span></div>
+                <div class="deal-banner">Flash Sale — 60% OFF<div class="sub">Ends in 02:14:09</div></div>
+                <div class="row">
+                  <div class="tile a"></div>
+                  <div class="tile b"></div>
+                </div>
+                <div class="homebar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="float-card c1">
+          <div class="thumb">🎧</div>
+          <div class="info">
+            <div class="title">Wireless Buds</div>
+            <div class="price">Rs. 3,499</div>
+          </div>
+        </div>
+
+        <div class="float-card c2">
+          <div class="thumb">👟</div>
+          <div class="info">
+            <div class="title">Runner Sneakers</div>
+            <div class="price">Rs. 5,999</div>
+          </div>
+        </div>
+
+        <div class="float-card c3">
+          <div class="thumb">💄</div>
+          <div class="info">
+            <div class="title">Glow Serum Set</div>
+            <div class="price">Rs. 2,150</div>
+          </div>
+        </div>
+
+        <div class="discount-chip">UP TO<br>60% OFF</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="./js/home.js\"></script>
+
 </body>
 </html>
