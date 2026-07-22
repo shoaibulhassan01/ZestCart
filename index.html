@@ -45,12 +45,8 @@
       </a>
 
       <form class="search-form" onsubmit="return false;">
-        <select>
+        <select class="all-pro">
           <option>All</option>
-          <option>Electronics</option>
-          <option>Fashion</option>
-          <option>Home</option>
-          <option>Beauty</option>
         </select>
         <input type="text" placeholder="Search for products, brands and more...">
         <button aria-label="Search">
@@ -186,7 +182,74 @@
   </div>
 </section>
 
-<script src="./js/home.js\"></script>
+<section class="cat-shop">
+  <div class="wrap">
+    <div class="cat-shop-head">
+      <div>
+        <span class="eyebrow-sm"><span class="bar"></span> Browse the aisles</span>
+        <h2>Shop by category</h2>
+        <p>Jump straight to what you need — every category, freshly stocked and ready to go.</p>
+      </div>
+      <div class="slider-controls">
+        <button class="slider-btn" id="catPrev" aria-label="Previous categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-btn" id="catNext" aria-label="Next categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+ 
+    <div class="cat-slider">
+      <div class="cat-track" id="catTrack">
+
+ 
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="featured-products">
+
+    <div class="wrap">
+
+        <div class="cat-shop-head">
+
+            <div>
+
+                <span class="eyebrow-sm">
+                    <span class="bar"></span>
+                    Handpicked for you
+                </span>
+
+                <h2>Featured Products</h2>
+
+                <p>
+                    Discover our highest-rated products with exclusive offers and amazing prices.
+                </p>
+
+            </div>
+
+            <a href="#" class="view-all-btn">
+                View All →
+            </a>
+
+        </div>
+
+        <div class="products-grid">
+
+         <!-- Product Card -->
+
+        </div>
+        <button class="load">Load more</button>
+
+    </div>
+
+</section>
+
+<script src="./js/home.js"></script>
 
 </body>
 </html>
