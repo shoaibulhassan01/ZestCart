@@ -139,6 +139,44 @@ async function applyFilter() {
     );
   }
 
+  const Stockcheckboxes = document.querySelectorAll(".stock-checkbox");
+
+  const selectedStocks = [...Stockcheckboxes]
+  .filter((cb)=>{
+    return cb.checked;
+  }).map((cb)=>{
+    return cb.value.toLowerCase();
+  })
+
+  console.log(selectedStocks)
+
+  if(selectedStocks.length == 2){
+    console.log("all")
+  }else{
+    if(selectedStocks[0] == 'in'){
+       filtered = filtered.filter((product)=>{
+         return product.stock > 0;
+       })
+       console.log("in")
+    }else if(selectedStocks[0] == 'out'){
+        filtered = filtered.filter((product)=>{
+         return product.stock == 0;
+       })
+       console.log("out")
+    }
+  }
+
+  const selectedRating = document.querySelector(
+    ".rating-checkbox:checked"
+);
+
+  if (selectedRating) {
+    filtered = filtered.filter(product =>
+        product.rating >= Number(selectedRating.value)
+    );
+}
+
+
   pros.products = filtered;
   renderProducts();
 }
@@ -153,6 +191,18 @@ function check() {
      const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
 
      Discountcheckboxes.forEach((checkbox)=>{
+        checkbox.addEventListener("change", applyFilter);
+     })
+
+     const Stockcheckboxes = document.querySelectorAll(".stock-checkbox");
+
+     Stockcheckboxes.forEach((checkbox)=>{
+        checkbox.addEventListener("change", applyFilter);
+     })
+
+     const ratingCheckbox = document.querySelectorAll(".rating-checkbox");
+
+     ratingCheckbox.forEach((checkbox)=>{
         checkbox.addEventListener("change", applyFilter);
      })
 }
