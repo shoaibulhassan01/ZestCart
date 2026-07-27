@@ -48,6 +48,21 @@ catTrack.addEventListener("scroll", updateCatButtons);
 window.addEventListener("resize", updateCatButtons);
 updateCatButtons();
 
+const brandTrack = document.getElementById('brandTrack');
+const brandPrev = document.getElementById('brandPrev');
+const brandNext = document.getElementById('brandNext');
+
+if (brandTrack && brandPrev && brandNext) {
+  const scrollAmount = () => brandTrack.querySelector('.brand-card').offsetWidth + 18;
+
+  brandNext.addEventListener('click', () => {
+    brandTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+  });
+  brandPrev.addEventListener('click', () => {
+    brandTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  });
+}
+
 let catData;
 
 async function fetchCategories() {
@@ -159,7 +174,7 @@ async function renderProducts() {
 }
 async function getFeaturedProducts() {
   featuredProducts = productsData.products.filter((val) => {
-    return val.rating > 4;
+    return val.rating > 3.5;
   });
 
   slicedProducts = featuredProducts.slice(0, visibleProducts);
