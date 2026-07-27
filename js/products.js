@@ -117,92 +117,107 @@ async function applyFilter() {
 
   if (selectedCategories.length > 0) {
     filtered = filtered.filter((product) =>
-      selectedCategories.includes(product.category.toLowerCase())
+      selectedCategories.includes(product.category.toLowerCase()),
     );
   }
 
   const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
 
   const selectedDiscounts = [...Discountcheckboxes]
-  .filter((cb)=>{
-    return cb.checked;
-  }).map((cb)=>{
-    return Number(cb.value);
-    
-  })
+    .filter((cb) => {
+      return cb.checked;
+    })
+    .map((cb) => {
+      return Number(cb.value);
+    });
 
   if (selectedDiscounts.length > 0) {
     filtered = filtered.filter((product) =>
-      selectedDiscounts.some(discount =>
-            product.discountPercentage >= discount
-        )
+      selectedDiscounts.some(
+        (discount) => product.discountPercentage >= discount,
+      ),
     );
   }
 
   const Stockcheckboxes = document.querySelectorAll(".stock-checkbox");
 
   const selectedStocks = [...Stockcheckboxes]
-  .filter((cb)=>{
-    return cb.checked;
-  }).map((cb)=>{
-    return cb.value.toLowerCase();
-  })
+    .filter((cb) => {
+      return cb.checked;
+    })
+    .map((cb) => {
+      return cb.value.toLowerCase();
+    });
 
-  console.log(selectedStocks)
+  console.log(selectedStocks);
 
-  if(selectedStocks.length == 2){
-    console.log("all")
-  }else{
-    if(selectedStocks[0] == 'in'){
-       filtered = filtered.filter((product)=>{
-         return product.stock > 0;
-       })
-       console.log("in")
-    }else if(selectedStocks[0] == 'out'){
-        filtered = filtered.filter((product)=>{
-         return product.stock == 0;
-       })
-       console.log("out")
+  if (selectedStocks.length == 2) {
+    console.log("all");
+  } else {
+    if (selectedStocks[0] == "in") {
+      filtered = filtered.filter((product) => {
+        return product.stock > 0;
+      });
+      console.log("in");
+    } else if (selectedStocks[0] == "out") {
+      filtered = filtered.filter((product) => {
+        return product.stock == 0;
+      });
+      console.log("out");
     }
   }
 
-  const selectedRating = document.querySelector(
-    ".rating-checkbox:checked"
-);
+  const selectedRating = document.querySelector(".rating-checkbox:checked");
 
   if (selectedRating) {
-    filtered = filtered.filter(product =>
-        product.rating >= Number(selectedRating.value)
+    filtered = filtered.filter(
+      (product) => product.rating >= Number(selectedRating.value),
     );
-}
+  }
 
+  const rangeMin = Number(document.querySelector(".range-min").value);
+  const rangeMax = Number(document.querySelector(".range-max").value);
+
+  if(!isNaN(rangeMin) && document.querySelector(".range-min").value !== ""){
+     filtered = filtered.filter(product => product.price >= rangeMin);
+  }
+
+   if(!isNaN(rangeMax) && document.querySelector(".range-max").value !== ""){
+     filtered = filtered.filter(product => product.price <= rangeMax);
+  }
 
   pros.products = filtered;
   renderProducts();
 }
 
 function check() {
-    const categoryCheckboxes = document.querySelectorAll(".category-checkbox");
+  const categoryCheckboxes = document.querySelectorAll(".category-checkbox");
 
-    categoryCheckboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", applyFilter);
-    });
+  categoryCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilter);
+  });
 
-     const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
+  const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
 
-     Discountcheckboxes.forEach((checkbox)=>{
-        checkbox.addEventListener("change", applyFilter);
-     })
+  Discountcheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilter);
+  });
 
-     const Stockcheckboxes = document.querySelectorAll(".stock-checkbox");
+  const Stockcheckboxes = document.querySelectorAll(".stock-checkbox");
 
-     Stockcheckboxes.forEach((checkbox)=>{
-        checkbox.addEventListener("change", applyFilter);
-     })
+  Stockcheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilter);
+  });
 
-     const ratingCheckbox = document.querySelectorAll(".rating-checkbox");
+  const ratingCheckbox = document.querySelectorAll(".rating-checkbox");
 
-     ratingCheckbox.forEach((checkbox)=>{
-        checkbox.addEventListener("change", applyFilter);
-     })
+  ratingCheckbox.forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilter);
+  });
+
+  const rangeMin = document.querySelector(".range-min");
+  const rangeMax = document.querySelector(".range-max");
+
+  rangeMin.addEventListener("change", applyFilter);
+  rangeMax.addEventListener("change", applyFilter);
 }
