@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Products — ZestCart</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="./css/products.css">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/products.css">
 </head>
 <body>
 
-<!-- ============ TOP STRIP + HEADER (same as home.html) ============ -->
-<div class="topstrip">
+  <div class="topstrip">
+  <h1>h1</h1>
   <div class="wrap">
     <div class="strip-marquee" id="marquee">
       <span><span class="dot"></span>Free delivery across Lahore on orders over Rs. 2,000</span>
@@ -28,14 +28,14 @@
     </div>
   </div>
 </div>
-
+ 
 <header class="site">
   <div class="wrap">
     <div class="nav-row">
       <a href="index.html" class="logo">
         <span class="wordmark">Zest<span class="zest">Cart</span></span>
       </a>
-
+ 
       <form class="search-form" onsubmit="return false;">
         <select class="all-pro"><option>All</option></select>
         <input type="text" placeholder="Search for products, brands and more...">
@@ -43,7 +43,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
       </form>
-
+ 
       <nav class="nav-actions">
         <a href="#" class="nav-action">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
@@ -60,7 +60,7 @@
         </a>
       </nav>
     </div>
-
+ 
     <div class="cat-row">
       <a href="#" class="hot">Today's Deals</a>
       <span class="divider"></span>
@@ -75,8 +75,7 @@
     </div>
   </div>
 </header>
-
-<!-- ============ PAGE HEADER / BREADCRUMB ============ -->
+ 
 <section class="page-head">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>All Products</span></div>
@@ -84,40 +83,31 @@
     <p><span class="result-count">1,248</span> products found</p>
   </div>
 </section>
-
-<!-- ============ PRODUCTS LAYOUT ============ -->
+ 
 <section class="products-page">
   <div class="wrap products-layout">
-
-    <!-- ---------- SIDEBAR FILTERS ---------- -->
+ 
     <aside class="filters-sidebar">
-
+ 
       <div class="filter-live-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" placeholder="Search products...">
       </div>
-
+ 
       <div class="filter-block">
-        <div class="filter-block-head">
-          <h3>Categories</h3>
-        </div>
-        <div class="filter-options">
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Electronics <em>(312)</em></label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Fashion <em>(487)</em></label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Home & Living <em>(196)</em></label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Beauty <em>(154)</em></label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Grocery <em>(88)</em></label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Sports <em>(65)</em></label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>Toys & Baby <em>(46)</em></label>
+        <div class="filter-block-head"><h3>Categories</h3></div>
+        <div class="filter-options cat-list" >
+          
+          
         </div>
       </div>
-
+ 
       <div class="filter-block">
         <div class="filter-block-head"><h3>Price Range</h3></div>
         <div class="price-slider-wrap">
+          <div class="price-track"></div>
           <input type="range" min="0" max="100000" value="0" class="price-range price-range-min">
           <input type="range" min="0" max="100000" value="100000" class="price-range price-range-max">
-          <div class="price-track"></div>
         </div>
         <div class="price-inputs">
           <div class="price-input-box">
@@ -131,7 +121,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="filter-block">
         <div class="filter-block-head"><h3>Rating</h3></div>
         <div class="filter-options">
@@ -140,7 +130,7 @@
           <label class="check-opt rating-opt"><input type="radio" name="rating"><span class="mark"></span><span class="stars-fixed">★★★<em class="dim">★★</em></span><span class="rate-label">& up</span></label>
         </div>
       </div>
-
+ 
       <div class="filter-block">
         <div class="filter-block-head"><h3>Brand</h3></div>
         <div class="filter-options">
@@ -152,7 +142,7 @@
           <label class="check-opt"><input type="checkbox"><span class="mark"></span>Khaadi</label>
         </div>
       </div>
-
+ 
       <div class="filter-block">
         <div class="filter-block-head"><h3>Availability</h3></div>
         <div class="filter-options">
@@ -160,22 +150,21 @@
           <label class="check-opt"><input type="checkbox"><span class="mark"></span>Out Of Stock <em>(216)</em></label>
         </div>
       </div>
-
+ 
       <div class="filter-block">
         <div class="filter-block-head"><h3>Discount</h3></div>
         <div class="filter-options">
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>10% or more</label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>20% or more</label>
-          <label class="check-opt"><input type="checkbox"><span class="mark"></span>30% or more</label>
+          <label class="check-opt"><input type="checkbox" class="discount-checkbox" value="10"><span class="mark"></span>10% or more</label>
+          <label class="check-opt"><input type="checkbox" class="discount-checkbox" value="20"><span class="mark"></span>20% or more</label>
+          <label class="check-opt"><input type="checkbox" class="discount-checkbox" value="30"><span class="mark"></span>30% or more</label>
         </div>
       </div>
-
+ 
       <button class="clear-filters-btn">Clear All Filters</button>
     </aside>
-
-    <!-- ---------- MAIN PRODUCTS AREA ---------- -->
+ 
     <div class="products-main">
-
+ 
       <div class="products-toolbar">
         <div class="toolbar-left">
           <span><strong>1,248</strong> results</span>
@@ -195,126 +184,22 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="products-grid">
-
-        <!-- ===== PRODUCT CARD (repeat this block for each product) ===== -->
-        <div class="product-card">
-          <div class="product-image">
-            <img src="./images/Earbuds2.png" alt="Wireless Earbuds">
-            <span class="discount-tag">-25%</span>
-            <button class="wishlist-btn" aria-label="Add to wishlist">♡</button>
-            <button class="quick-view-btn">Quick View</button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Electronics</span>
-            <h3 class="product-title">ProSound X200 Wireless Bluetooth Earbuds — Noise Cancelling</h3>
-            <div class="rating-row">
-              <span class="stars">★★★★☆</span>
-              <span>(214)</span>
-            </div>
-            <div class="brand-row"><span class="brand-tag">Sony</span></div>
-            <div class="price-row">
-              <div>
-                <span class="current-price">Rs. 4,499</span>
-                <span class="old-price">Rs. 5,999</span>
-              </div>
-              <span class="stock">In Stock</span>
-            </div>
-            <button class="cart-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
-              Add To Cart
-            </button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img src="./images/shoes.png" alt="Running Shoes">
-            <span class="discount-tag">-40%</span>
-            <button class="wishlist-btn" aria-label="Add to wishlist">♡</button>
-            <button class="quick-view-btn">Quick View</button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Sports</span>
-            <h3 class="product-title">AirGlide Running Shoes — Breathable Mesh, Men's</h3>
-            <div class="rating-row">
-              <span class="stars">★★★★★</span>
-              <span>(589)</span>
-            </div>
-            <div class="brand-row"><span class="brand-tag">Nike</span></div>
-            <div class="price-row">
-              <div>
-                <span class="current-price">Rs. 6,999</span>
-                <span class="old-price">Rs. 11,499</span>
-              </div>
-              <span class="stock">In Stock</span>
-            </div>
-            <button class="cart-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
-              Add To Cart
-            </button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img src="./images/makeup.png" alt="Makeup Set">
-            <span class="discount-tag">-15%</span>
-            <button class="wishlist-btn" aria-label="Add to wishlist">♡</button>
-            <button class="quick-view-btn">Quick View</button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Beauty</span>
-            <h3 class="product-title">GlowLux Complete Makeup Kit — 12 Piece Set</h3>
-            <div class="rating-row">
-              <span class="stars">★★★☆☆</span>
-              <span>(98)</span>
-            </div>
-            <div class="brand-row"><span class="brand-tag">L'Oréal</span></div>
-            <div class="price-row">
-              <div>
-                <span class="current-price">Rs. 2,899</span>
-                <span class="old-price">Rs. 3,399</span>
-              </div>
-              <span class="stock out">Out of Stock</span>
-            </div>
-            <button class="cart-btn" disabled>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
-              Notify Me
-            </button>
-          </div>
-        </div>
-
-        <!-- ===== END PRODUCT CARD (repeat as needed, or generate via JS) ===== -->
-
+ 
+       
+ 
+       
+        
+ 
       </div>
-
-      <!-- ---------- PAGINATION ---------- -->
-      <nav class="pagination" aria-label="Product pagination">
-        <button class="page-btn page-prev" disabled>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Prev
-        </button>
-        <div class="page-numbers">
-          <button class="page-num active">1</button>
-          <button class="page-num">2</button>
-          <button class="page-num">3</button>
-          <button class="page-num">4</button>
-          <span class="page-dots">…</span>
-          <button class="page-num">24</button>
-        </div>
-        <button class="page-btn page-next">
-          Next
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </nav>
-
+ 
+      
+ 
     </div>
   </div>
 </section>
-
-<!-- ============ FOOTER (same as home.html) ============ -->
+ 
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">

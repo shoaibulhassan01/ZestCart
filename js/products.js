@@ -1,0 +1,158 @@
+let data;
+let pros;
+async function fetchProducts() {
+  const response = await fetch(`https://dummyjson.com/products`);
+  data = await response.json();
+  pros = {
+    ...data,
+    products: [...data.products],
+  };
+}
+const proCon = document.querySelector(".products-grid");
+async function renderProducts() {
+  proCon.innerHTML = "";
+  pros.products.map((val) => {
+    proCon.innerHTML += `<article class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">
+                        -${val.discountPercentage}%
+                    </span>
+                    <button class="wishlist-btn">
+                        ♡
+                    </button>
+                    <img
+                        src="${val.thumbnail}"
+                        alt=""
+                    >
+                </div>
+                <div class="product-info">
+                    <span class="product-category">
+                        ${val.category}
+                    </span>
+                    <h3 class="product-title">
+                        ${val.title}
+                    </h3>
+                    <div class="rating-row">
+                        <div class="stars">
+                            ${"★".repeat(Math.floor(val.rating))}
+                        </div>
+                        <span>
+                            ${val.rating}
+                        </span>
+                    </div>
+                    <div class="price-row">
+                        <div>
+                            <span class="current-price">
+                               ${val.price}$
+                            </span>
+                            <span class="old-price">
+                               ${((val.discountPercentage / 100) * val.price + val.price).toFixed(1)}$
+                            </span>
+                        </div>
+                        <span class="stock">
+                          ${val.stock > 0 ? "In Stock" : "Out of Stock"}
+                        </span>
+                    </div>
+                    <button class="cart-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/>
+                            <circle cx="9.5" cy="21" r="1.2"/>
+                            <circle cx="17.5" cy="21" r="1.2"/>
+                        </svg>
+                        Add to Cart
+                    </button>
+                </div>
+            </article>
+ `;
+  });
+}
+
+var cats;
+async function fetchCategories() {
+  const res2 = await fetch("https://dummyjson.com/products/categories");
+  cats = await res2.json();
+}
+
+const categoryCon = document.querySelector(".cat-list");
+async function renderCategories() {
+  cats.map((val) => {
+    let count = 0;
+    data.products.forEach((val2) => {
+      if (val.name.toLowerCase() == val2.category.toLowerCase()) {
+        count++;
+      }
+    });
+    categoryCon.innerHTML += `
+    ${
+      count > 1
+        ? `<label class="check-opt"><input type="checkbox" class="category-checkbox" value="${val.name}"><span class="mark"></span> ${val.name} <em> ${count}
+             </em></label>`
+        : ""
+    }
+  
+            `;
+  });
+}
+
+async function showCats() {
+  await fetchProducts();
+
+  renderProducts();
+  await fetchCategories();
+  await renderCategories();
+  check();
+}
+
+showCats();
+
+let filtered;
+
+async function applyFilter() {
+  const Categorycheckboxes = document.querySelectorAll(".category-checkbox");
+  filtered = [...data.products];
+
+  const selectedCategories = [...Categorycheckboxes]
+    .filter((cb) => cb.checked)
+    .map((cb) => cb.value.toLowerCase());
+
+  if (selectedCategories.length > 0) {
+    filtered = filtered.filter((product) =>
+      selectedCategories.includes(product.category.toLowerCase())
+    );
+  }
+
+  const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
+
+  const selectedDiscounts = [...Discountcheckboxes]
+  .filter((cb)=>{
+    return cb.checked;
+  }).map((cb)=>{
+    return Number(cb.value);
+    
+  })
+
+  if (selectedDiscounts.length > 0) {
+    filtered = filtered.filter((product) =>
+      selectedDiscounts.some(discount =>
+            product.discountPercentage >= discount
+        )
+    );
+  }
+
+  pros.products = filtered;
+  renderProducts();
+}
+
+function check() {
+    const categoryCheckboxes = document.querySelectorAll(".category-checkbox");
+
+    categoryCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", applyFilter);
+    });
+
+     const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
+
+     Discountcheckboxes.forEach((checkbox)=>{
+        checkbox.addEventListener("change", applyFilter);
+     })
+}
