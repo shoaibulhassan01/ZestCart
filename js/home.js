@@ -48,18 +48,19 @@ catTrack.addEventListener("scroll", updateCatButtons);
 window.addEventListener("resize", updateCatButtons);
 updateCatButtons();
 
-const brandTrack = document.getElementById('brandTrack');
-const brandPrev = document.getElementById('brandPrev');
-const brandNext = document.getElementById('brandNext');
+const brandTrack = document.getElementById("brandTrack");
+const brandPrev = document.getElementById("brandPrev");
+const brandNext = document.getElementById("brandNext");
 
 if (brandTrack && brandPrev && brandNext) {
-  const scrollAmount = () => brandTrack.querySelector('.brand-card').offsetWidth + 18;
+  const scrollAmount = () =>
+    brandTrack.querySelector(".brand-card").offsetWidth + 18;
 
-  brandNext.addEventListener('click', () => {
-    brandTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+  brandNext.addEventListener("click", () => {
+    brandTrack.scrollBy({ left: scrollAmount(), behavior: "smooth" });
   });
-  brandPrev.addEventListener('click', () => {
-    brandTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  brandPrev.addEventListener("click", () => {
+    brandTrack.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
   });
 }
 
@@ -99,7 +100,7 @@ async function addCategoryList() {
 async function showCategories() {
   await fetchCategories();
   renderCategories();
-  addCategoryList()
+  addCategoryList();
 }
 
 showCategories();
@@ -118,7 +119,7 @@ async function renderProducts() {
     var proCon = document.querySelector(".products-grid");
     proCon.innerHTML += `
     <article class="product-card">
-                <div class="product-image">
+                <div class="product-image" data-id="${val.id}">
                     <span class="discount-tag">
                         -${val.discountPercentage}%
                     </span>
@@ -183,6 +184,7 @@ async function getFeaturedProducts() {
 async function main() {
   await fetchProducts();
   await getFeaturedProducts();
+  singleProduct();
 }
 main();
 
@@ -203,14 +205,28 @@ loadBtn.addEventListener("click", () => {
 
 const searchInput = document.querySelector(".search-input");
 
-searchInput.addEventListener('keydown', (e)=>{
-  if(e.key === "Enter"){
-    console.log("Yes")
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    
     const query = searchInput.value.trim();
 
-    if(query!== ""){
-      window.location.href = `search.html?q=${encodeURIComponent(query)}`
+    if (query !== "") {
+      window.location.href = `search.html?q=${encodeURIComponent(query)}`;
     }
-
   }
-})
+});
+
+
+async function singleProduct(){
+  
+  const proImage = document.querySelectorAll(".product-image");
+  proImage.forEach((e) => {
+    e.addEventListener("click", () => {
+      const id = e.dataset.id;
+      if(!isNaN(id)){
+        window.location.href = `product.html?id=${encodeURIComponent(id)}`
+      }
+    });
+  });
+
+}
