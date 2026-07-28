@@ -18,7 +18,7 @@ async function renderProduct() {
         <div class="main-image-frame">
           <span class="discount-badge" id="discountBadge">-${Math.round(data.discountPercentage)}%</span>
           <button class="gallery-wishlist" id="galleryWishlist" aria-label="Add to wishlist">♡</button>
-          <img src="${data.images[1]}" alt="${data.title}" id="mainImage">
+          <img src="${data.images[0]}" alt="${data.title}" id="mainImage">
         </div>
         <div class="thumb-list" id="thumbList">
           ${data.images.map((img, i) => `

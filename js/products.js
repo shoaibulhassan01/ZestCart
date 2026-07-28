@@ -12,8 +12,8 @@ const proCon = document.querySelector(".products-grid");
 async function renderProducts() {
   proCon.innerHTML = "";
   pros.products.map((val) => {
-    proCon.innerHTML += `<article class="product-card">
-                <div class="product-image">
+    proCon.innerHTML += `<article class="product-card" >
+                <div class="product-image" data-id=${val.id}>
                     <span class="discount-tag">
                         -${val.discountPercentage}%
                     </span>
@@ -94,10 +94,27 @@ async function renderCategories() {
   });
 }
 
+async function singleProduct(){
+  
+  const proImage = document.querySelectorAll(".product-image");
+  console.log(proImage)
+  proImage.forEach((e) => {
+    console.log("yes")
+    e.addEventListener("click", () => {
+      console.log("Yes2")
+      const id = e.dataset.id;
+      if(!isNaN(id)){
+        window.location.href = `product.html?id=${encodeURIComponent(id)}`
+      }
+    });
+  });
+
+}
+
 async function showCats() {
   await fetchProducts();
-
-  renderProducts();
+  await renderProducts();
+  singleProduct()
   await fetchCategories();
   await renderCategories();
   check();
@@ -283,3 +300,4 @@ searchInput.addEventListener('keydown', (e)=>{
 
   }
 })
+
