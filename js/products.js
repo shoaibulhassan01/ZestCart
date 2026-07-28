@@ -221,3 +221,36 @@ function check() {
   rangeMin.addEventListener("change", applyFilter);
   rangeMax.addEventListener("change", applyFilter);
 }
+
+const clearFilter = document.querySelector(".clear-filters-btn");
+
+clearFilter.addEventListener("click", ()=>{
+
+
+  const categoryCheckboxes = document.querySelectorAll(".category-checkbox");
+  categoryCheckboxes.forEach((checkbox)=>{
+    checkbox.checked = false;
+  })
+
+  const Discountcheckboxes = document.querySelectorAll(".discount-checkbox");
+   Discountcheckboxes.forEach((checkbox)=>{
+    checkbox.checked = false;
+  })
+
+  const Stockcheckboxes = document.querySelectorAll(".stock-checkbox");
+   Stockcheckboxes.forEach((checkbox)=>{
+    checkbox.checked = false;
+  })
+
+  const ratingCheckbox = document.querySelectorAll(".rating-checkbox");
+  ratingCheckbox.forEach((checkbox)=>{
+    checkbox.checked = false;
+  })
+
+ document.querySelector(".range-min").value = "";
+document.querySelector(".range-max").value = "";
+
+
+  applyFilter();
+   
+})
