@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results — ZestCart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ===================== SEARCH PAGE — IN-PAGE POLISH ===================== */
+
+      .search-topbar{
+        position:sticky;
+        top:0;
+        z-index:90;
+        background:rgba(11,19,16,0.86);
+        backdrop-filter:blur(14px) saturate(140%);
+        -webkit-backdrop-filter:blur(14px) saturate(140%);
+        border-bottom:1px solid var(--line);
+        padding:16px 0;
+      }
+      .search-topbar .wrap{
+        display:flex;
+        align-items:center;
+        gap:22px;
+      }
+      .search-topbar .logo{
+        display:flex;
+        align-items:center;
+        flex-shrink:0;
+      }
+      .search-topbar .wordmark{
+        font-family:'Bricolage Grotesque', sans-serif;
+        font-weight:800;
+        font-size:24px;
+        letter-spacing:-0.03em;
+        color:var(--cream);
+      }
+      .search-topbar .wordmark .zest{ color:var(--lime); }
+
+      .search-bar-form{
+        flex:1;
+        max-width:640px;
+        display:flex;
+        align-items:center;
+        background:var(--panel);
+        border:1px solid var(--line);
+        border-radius:999px;
+        padding:5px 5px 5px 20px;
+        transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+      }
+      .search-bar-form:focus-within{
+        border-color:var(--lime);
+        box-shadow: 0 0 0 4px var(--lime-dim);
+      }
+      .search-bar-form input{
+        flex:1;
+        background:transparent;
+        border:none;
+        outline:none;
+        color:var(--cream);
+        font-size:14.5px;
+        padding:10px 10px;
+        font-family:'Inter', sans-serif;
+      }
+      .search-bar-form input::placeholder{ color:var(--cream-dim); }
+      .search-bar-form button{
+        width:38px; height:38px;
+        border-radius:50%;
+        background:var(--lime);
+        color:var(--ink);
+        border:none;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-shrink:0;
+        cursor:pointer;
+        transition: transform .25s var(--ease);
+      }
+      .search-bar-form button:hover{ transform:scale(1.08) rotate(8deg); }
+      .search-bar-form button svg{ width:16px; height:16px; }
+
+      /* ---- Results head ---- */
+      .search-hero{
+        padding:48px 0 8px;
+      }
+      .search-hero .eyebrow-sm{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        font-size:12.5px;
+        font-weight:600;
+        color:var(--lime);
+        letter-spacing:.03em;
+        text-transform:uppercase;
+      }
+      .search-hero .eyebrow-sm .bar{ width:20px; height:1px; background:var(--lime); display:inline-block; }
+      .search-hero h2{
+        font-family:'Bricolage Grotesque', sans-serif;
+        font-size:clamp(26px, 3.2vw, 38px);
+        font-weight:800;
+        margin:12px 0 8px;
+        letter-spacing:-0.02em;
+        color:var(--cream);
+      }
+      .search-hero h2 .query1{ color:var(--lime); font-style:italic; }
+      .search-hero p{
+        color:var(--cream-dim);
+        font-size:14.5px;
+      }
+      .search-hero .length{ color:var(--cream); font-weight:700; }
+
+      /* ---- Product grid entrance polish ---- */
+      .products-grid{
+        margin-top:34px;
+  
+      }
+      .product-card{
+        opacity:0;
+        transform:translateY(16px);
+        animation: cardRise .5s var(--ease) forwards;
+      }
+      @keyframes cardRise{
+        to{ opacity:1; transform:translateY(0); }
+      }
+      .product-image{ position:relative; }
+
+      /* Stagger card entrance a little using nth-child, purely cosmetic */
+      .product-card:nth-child(1){ animation-delay:.02s; }
+      .product-card:nth-child(2){ animation-delay:.06s; }
+      .product-card:nth-child(3){ animation-delay:.10s; }
+      .product-card:nth-child(4){ animation-delay:.14s; }
+      .product-card:nth-child(5){ animation-delay:.18s; }
+      .product-card:nth-child(6){ animation-delay:.22s; }
+      .product-card:nth-child(n+7){ animation-delay:.24s; }
+
+      .product-title{ text-transform:capitalize; }
+      .product-category{ text-transform:capitalize; }
+
+      .stars{ display:inline-block; }
+
+      /* ---- Empty state (shown if JS finds 0 products) ---- */
+      .search-empty{
+        display:none;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        gap:10px;
+        padding:80px 20px;
+        border:1px dashed var(--line);
+        border-radius:var(--radius);
+        margin-top:20px;
+      }
+      .search-empty.show{ display:flex; }
+      .search-empty .icon{
+        width:56px; height:56px;
+        border-radius:50%;
+        background:var(--panel);
+        display:flex; align-items:center; justify-content:center;
+        margin-bottom:6px;
+      }
+      .search-empty .icon svg{ width:24px; height:24px; stroke:var(--cream-dim); }
+      .search-empty h3{
+        font-family:'Bricolage Grotesque', sans-serif;
+        font-size:20px;
+        font-weight:700;
+        color:var(--cream);
+      }
+      .search-empty p{
+        color:var(--cream-dim);
+        font-size:13.5px;
+        max-width:320px;
+      }
+
+      /* ---- Simple loading state ---- */
+      .search-loading{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+        padding:70px 20px;
+        color:var(--cream-dim);
+        font-size:14px;
+      }
+      .search-loading.hide{ display:none; }
+      .search-loading .spin{
+        width:18px; height:18px;
+        border-radius:50%;
+        border:2px solid var(--line);
+        border-top-color:var(--lime);
+        animation: spinRotate .7s linear infinite;
+      }
+      @keyframes spinRotate{ to{ transform:rotate(360deg); } }
+
+      @media (max-width:760px){
+        .search-topbar .wordmark{ font-size:20px; }
+        .search-bar-form{ max-width:none; }
+      }
+      @media (max-width:520px){
+        .search-topbar .wrap{ flex-wrap:wrap; gap:12px; }
+        .search-bar-form{ order:3; width:100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topstrip">
+      <div class="wrap">
+        <div class="strip-marquee" id="marquee">
+          <span
+            ><span class="dot"></span>Free delivery across Lahore on orders over
+            Rs. 2,000</span
+          >
+          <span
+            ><span class="dot"></span>Flat 20% off your first squeeze — code
+            FRESH20</span
+          >
+          <span
+            ><span class="dot"></span>Cash on delivery available
+            nationwide</span
+          >
+          <span
+            ><span class="dot"></span>Free delivery across Lahore on orders over
+            Rs. 2,000</span
+          >
+          <span
+            ><span class="dot"></span>Flat 20% off your first squeeze — code
+            FRESH20</span
+          >
+          <span
+            ><span class="dot"></span>Cash on delivery available
+            nationwide</span
+          >
+        </div>
+        <div class="topstrip-links">
+          <a href="#">Sell on ZestCart</a>
+          <a href="#">Track Order</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-topbar">
+      <div class="wrap">
+        <a href="index.html" class="logo">
+          <span class="wordmark">Zest<span class="zest">Cart</span></span>
+        </a>
+        <form class="search-bar-form" action="./search.html" method="GET">
+          <input type="text" name="q" placeholder="Search for products, brands and more..." />
+          <button type="submit" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <section class="featured-products">
+      <div class="wrap">
+        <div class="search-hero">
+          <span class="eyebrow-sm"
+            ><span class="bar"></span> Search results</span
+          >
+          <h2>Showing results for "<span class="query1"></span>"</h2>
+          <p>
+            <span class="length">0</span> products found matching your search.
+          </p>
+        </div>
+
+        <div class="search-loading" id="searchLoading">
+          <span class="spin"></span>
+          Searching ZestCart for the best matches...
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+
+        <div class="search-empty" id="searchEmpty">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>No products found</h3>
+          <p>We couldn't find anything matching your search. Try a different keyword or check your spelling.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="wordmark">Zest<span class="zest">Cart</span></div>
+            <p>
+              Lahore's freshest way to shop online — thousands of deals across
+              electronics, fashion, home and grocery, delivered fast.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"
+                ><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" /></svg
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.2-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.1 4.1 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.6-6.3 11.6-11.6v-.5c.8-.6 1.5-1.3 2.1-2.1Z"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="#">Electronics</a></li>
+              <li><a href="#">Fashion</a></li>
+              <li><a href="#">Home & Living</a></li>
+              <li><a href="#">Beauty</a></li>
+              <li><a href="#">Today's Deals</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Customer Service</h4>
+            <ul>
+              <li><a href="#">Track Order</a></li>
+              <li><a href="#">Returns & Refunds</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About ZestCart</a></li>
+              <li><a href="#">Sell on ZestCart</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 ZestCart. All rights reserved.</span>
+          <div class="payment-icons">
+            <span>Visa</span><span>Mastercard</span><span>COD</span
+            ><span>EasyPaisa</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get("q");
+
+      const queryCon = document.querySelector(".query1");
+      queryCon.innerText = query;
+
+      // keep the search bar in sync with the current query
+      const searchInput = document.querySelector('.search-bar-form input[name="q"]');
+      if (searchInput && query) searchInput.value = query;
+
+      let data;
+      async function fetchProducts() {
+        let response = await fetch(
+          `https://dummyjson.com/products/search?q=${query}`,
+        );
+        data = await response.json();
+      }
+
+      async function renderProducts() {
+        data.products.map((val) => {
+          document.querySelector(".products-grid").innerHTML += `
+             <article class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">
+                        -${val.discountPercentage}%
+                    </span>
+                    <button class="wishlist-btn">
+                        ♡
+                    </button>
+                    <img
+                        src="${val.thumbnail}"
+                        alt=""
+                    >
+                </div>
+                <div class="product-info">
+                    <span class="product-category">
+                        ${val.category}
+                    </span>
+                    <h3 class="product-title">
+                        ${val.title}
+                    </h3>
+                    <div class="rating-row">
+                        <div class="stars">
+                            ${"★".repeat(Math.floor(val.rating))}
+                        </div>
+                        <span>
+                            ${val.rating}
+                        </span>
+                    </div>
+                    <div class="price-row">
+                        <div>
+                            <span class="current-price">
+                               ${val.price}$
+                            </span>
+                            <span class="old-price">
+                               ${((val.discountPercentage / 100) * val.price + val.price).toFixed(1)}$
+                            </span>
+                        </div>
+                        <span class="stock">
+                          ${val.stock > 0 ? "In Stock" : "Out of Stock"}
+                        </span>
+                    </div>
+                    <button class="cart-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/>
+                            <circle cx="9.5" cy="21" r="1.2"/>
+                            <circle cx="17.5" cy="21" r="1.2"/>
+                        </svg>
+                        Add to Cart
+                    </button>
+                </div>
+            </article>
+             `;
+        });
+      }
+
+      async function main() {
+        const loadingEl = document.getElementById("searchLoading");
+        const emptyEl = document.getElementById("searchEmpty");
+
+        await fetchProducts();
+
+        loadingEl.classList.add("hide");
+
+        const proLength = document.querySelector(".length");
+        proLength.innerText = data.products.length;
+
+        if (data.products.length === 0) {
+          emptyEl.classList.add("show");
+        } else {
+          renderProducts();
+        }
+      }
+
+      main();
+    </script>
+  </body>
+</html>

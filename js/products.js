@@ -269,3 +269,17 @@ document.querySelector(".range-max").value = "";
   applyFilter();
    
 })
+
+const searchInput = document.querySelector(".search-input");
+
+searchInput.addEventListener('keydown', (e)=>{
+  if(e.key === "Enter"){
+    console.log("Yes")
+    const query = searchInput.value.trim();
+
+    if(query!== ""){
+      window.location.href = `search.html?q=${encodeURIComponent(query)}`
+    }
+
+  }
+})
