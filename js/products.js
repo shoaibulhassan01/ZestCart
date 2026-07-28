@@ -186,6 +186,16 @@ async function applyFilter() {
      filtered = filtered.filter(product => product.price <= rangeMax);
   }
 
+   const search = document.querySelector(".search").value.toLowerCase().trim();
+
+  if(search !== ""){
+    filtered = filtered.filter((product)=>{
+      return product.title.toLowerCase().includes(search);
+    })
+  }
+
+
+ 
   pros.products = filtered;
   renderProducts();
 }
@@ -220,6 +230,12 @@ function check() {
 
   rangeMin.addEventListener("change", applyFilter);
   rangeMax.addEventListener("change", applyFilter);
+
+  const searchForm = document.querySelector(".search");
+
+
+  searchForm.addEventListener("input", applyFilter);
+ 
 }
 
 const clearFilter = document.querySelector(".clear-filters-btn");
@@ -247,9 +263,8 @@ clearFilter.addEventListener("click", ()=>{
     checkbox.checked = false;
   })
 
- document.querySelector(".range-min").value = "";
+document.querySelector(".range-min").value = "";
 document.querySelector(".range-max").value = "";
-
 
   applyFilter();
    
