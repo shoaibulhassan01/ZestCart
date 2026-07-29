@@ -249,7 +249,7 @@ catCard.forEach((e)=>{
 })
 }
 
-var select = document.querySelector(".all-pro")
+
 function goToPage(select) {
     if (select.value) {
         window.location.href = select.value;
