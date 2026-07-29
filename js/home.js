@@ -76,31 +76,33 @@ let catCon = document.querySelector(".cat-track");
 async function renderCategories() {
   catData.map((val) => {
     var html = `
-      <a href="#" class="cat-card" style="--card-accent:#D7F900; --card-glow:rgba(215,249,0,0.16);">
+      <a href="category.html?name=${val.name}" data-name=${val.name} class="cat-card" style="--card-accent:#D7F900; --card-glow:rgba(215,249,0,0.16);">
           <span class="ghost">${val.name[0]}</span>
           <div class="accent-bar"></div>
           <div class="name">${val.name}</div>
-          <div class="count"><span class="dot"></span>1,240 items</div>
+         
           <div class="go">Shop now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </a>
     `;
 
     catCon.innerHTML += html;
+    
   });
 }
 const catList = document.querySelector(".all-pro");
 async function addCategoryList() {
   catData.map((val) => {
     catList.innerHTML += `
-        <option>${val.name}</option>
+        <option value="category.html?name=${val.name}">${val.name}</a>
         `;
   });
 }
 
 async function showCategories() {
   await fetchCategories();
-  renderCategories();
-  addCategoryList();
+  await renderCategories();
+  await addCategoryList();
+  singleCat();
 }
 
 showCategories();
@@ -185,6 +187,8 @@ async function main() {
   await fetchProducts();
   await getFeaturedProducts();
   singleProduct();
+  goToPage();
+  
 }
 main();
 
@@ -229,4 +233,25 @@ async function singleProduct(){
     });
   });
 
+}
+
+
+async function singleCat(){
+  const catCard = document.querySelectorAll('cat-card');
+  console.log("Start")
+console.log(catCard)
+
+catCard.forEach((e)=>{
+  console.log("Yes1")
+  e.addEventListener("click", ()=>{
+    console.log("yes")
+  })
+})
+}
+
+var select = document.querySelector(".all-pro")
+function goToPage(select) {
+    if (select.value) {
+        window.location.href = select.value;
+    }
 }

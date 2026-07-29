@@ -36,8 +36,8 @@
       </a>
 
       <form class="search-form" onsubmit="return false;">
-        <select class="all-pro">
-          <option>All</option>
+        <select class="all-pro" onchange="goToPage(this)">
+          <option value="">All</option>
         </select>
         <input type="text" placeholder="Search for products..." class="search-input">
         <button aria-label="Search">
