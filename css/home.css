@@ -1288,3 +1288,9 @@
   .footer-top{ grid-template-columns:1fr; }
   .footer-bottom{ flex-direction:column; align-items:flex-start; }
 }
+
+.wishlist-btn{
+ 
+    z-index: 9999;
+    cursor: pointer;
+}

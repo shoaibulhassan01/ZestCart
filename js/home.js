@@ -86,7 +86,6 @@ async function renderCategories() {
     `;
 
     catCon.innerHTML += html;
-    
   });
 }
 const catList = document.querySelector(".all-pro");
@@ -121,11 +120,11 @@ async function renderProducts() {
     var proCon = document.querySelector(".products-grid");
     proCon.innerHTML += `
     <article class="product-card">
-                <div class="product-image" data-id="${val.id}">
+                <div class="product-image" >
                     <span class="discount-tag">
                         -${val.discountPercentage}%
                     </span>
-                    <button class="wishlist-btn">
+                    <button class="wishlist-btn" onclick="console.log('clicked')" data-id = ${val.id}>
                         ♡
                     </button>
                     <img
@@ -137,7 +136,7 @@ async function renderProducts() {
                     <span class="product-category">
                         ${val.category}
                     </span>
-                    <h3 class="product-title">
+                    <h3 class="product-title" data-id="${val.id}">
                         ${val.title}
                     </h3>
                     <div class="rating-row">
@@ -186,9 +185,9 @@ async function getFeaturedProducts() {
 async function main() {
   await fetchProducts();
   await getFeaturedProducts();
+  addWishList();
   singleProduct();
   goToPage();
-  
 }
 main();
 
@@ -205,13 +204,13 @@ loadBtn.addEventListener("click", () => {
   }
 
   renderProducts();
+  addWishList();
 });
 
 const searchInput = document.querySelector(".search-input");
 
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    
     const query = searchInput.value.trim();
 
     if (query !== "") {
@@ -220,38 +219,55 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-
-async function singleProduct(){
-  
-  const proImage = document.querySelectorAll(".product-image");
+async function singleProduct() {
+  const proImage = document.querySelectorAll(".product-title");
   proImage.forEach((e) => {
     e.addEventListener("click", () => {
       const id = e.dataset.id;
-      if(!isNaN(id)){
-        window.location.href = `product.html?id=${encodeURIComponent(id)}`
+      if (!isNaN(id)) {
+        window.location.href = `product.html?id=${encodeURIComponent(id)}`;
       }
     });
   });
-
 }
 
+async function singleCat() {
+  const catCard = document.querySelectorAll("cat-card");
 
-async function singleCat(){
-  const catCard = document.querySelectorAll('cat-card');
-  console.log("Start")
-console.log(catCard)
-
-catCard.forEach((e)=>{
-  console.log("Yes1")
-  e.addEventListener("click", ()=>{
-    console.log("yes")
-  })
-})
+  catCard.forEach((e) => {
+    console.log("Yes1");
+    e.addEventListener("click", () => {
+      console.log("yes");
+    });
+  });
 }
-
 
 function goToPage(select) {
-    if (select.value) {
-        window.location.href = select.value;
-    }
+  if (select.value) {
+    window.location.href = select.value;
+  }
 }
+
+
+
+function addWishList() {
+  const wishlistBtn = document.querySelectorAll(".wishlist-btn");
+
+  wishlistBtn.forEach((e) => {
+    e.addEventListener("click", () => {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      let flag = true;
+      for (let i = 0; i < wishlist.length; i++) {
+        if (e.dataset.id === String(wishlist[i])) {
+          flag = false;
+        }
+      }
+      if (flag == true) {
+        wishlist.push(e.dataset.id);
+
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      }
+    });
+  });
+}
+
