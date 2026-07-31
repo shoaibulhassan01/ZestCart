@@ -12,15 +12,15 @@ if (
 }
 
 // Cart badge micro-bounce on click, for a bit of playful feedback
-document.querySelectorAll(".nav-action").forEach((el) => {
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-    el.style.transform = "scale(0.94)";
-    setTimeout(() => {
-      el.style.transform = "";
-    }, 140);
-  });
-});
+// document.querySelectorAll(".nav-action").forEach((el) => {
+//   el.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     el.style.transform = "scale(0.94)";
+//     setTimeout(() => {
+//       el.style.transform = "";
+//     }, 140);
+//   });
+// });
 
 const catTrack = document.getElementById("catTrack");
 const catPrev = document.getElementById("catPrev");
