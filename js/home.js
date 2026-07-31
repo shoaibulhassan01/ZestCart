@@ -124,7 +124,7 @@ async function renderProducts() {
                     <span class="discount-tag">
                         -${val.discountPercentage}%
                     </span>
-                    <button class="wishlist-btn" onclick="console.log('clicked')" data-id = ${val.id}>
+                    <button class="wishlist-btn" data-id = ${val.id}>
                         ♡
                     </button>
                     <img
@@ -255,6 +255,7 @@ function addWishList() {
 
   wishlistBtn.forEach((e) => {
     e.addEventListener("click", () => {
+     showToast("✅ Product added to wishlist");
       let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       let flag = true;
       for (let i = 0; i < wishlist.length; i++) {
@@ -271,3 +272,15 @@ function addWishList() {
   });
 }
 
+
+function showToast(message){
+  console.log("Show")
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}

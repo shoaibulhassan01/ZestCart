@@ -1294,3 +1294,25 @@
     z-index: 9999;
     cursor: pointer;
 }
+
+h3{
+  cursor: pointer;
+}
+
+.toast{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--lime);
+    color: rgb(0, 0, 0);
+    padding: 12px 18px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.toast.show{
+    opacity: 1;
+}
