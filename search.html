@@ -14,80 +14,19 @@
     <style>
       /* ===================== SEARCH PAGE — IN-PAGE POLISH ===================== */
 
-      .search-topbar{
-        position:sticky;
-        top:0;
-        z-index:90;
-        background:rgba(11,19,16,0.86);
-        backdrop-filter:blur(14px) saturate(140%);
-        -webkit-backdrop-filter:blur(14px) saturate(140%);
-        border-bottom:1px solid var(--line);
-        padding:16px 0;
-      }
-      .search-topbar .wrap{
-        display:flex;
-        align-items:center;
-        gap:22px;
-      }
-      .search-topbar .logo{
-        display:flex;
-        align-items:center;
-        flex-shrink:0;
-      }
-      .search-topbar .wordmark{
-        font-family:'Bricolage Grotesque', sans-serif;
-        font-weight:800;
-        font-size:24px;
-        letter-spacing:-0.03em;
-        color:var(--cream);
-      }
-      .search-topbar .wordmark .zest{ color:var(--lime); }
-
-      .search-bar-form{
-        flex:1;
-        max-width:640px;
-        display:flex;
-        align-items:center;
-        background:var(--panel);
-        border:1px solid var(--line);
-        border-radius:999px;
-        padding:5px 5px 5px 20px;
-        transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
-      }
-      .search-bar-form:focus-within{
-        border-color:var(--lime);
-        box-shadow: 0 0 0 4px var(--lime-dim);
-      }
-      .search-bar-form input{
-        flex:1;
-        background:transparent;
-        border:none;
-        outline:none;
-        color:var(--cream);
-        font-size:14.5px;
-        padding:10px 10px;
-        font-family:'Inter', sans-serif;
-      }
-      .search-bar-form input::placeholder{ color:var(--cream-dim); }
-      .search-bar-form button{
-        width:38px; height:38px;
-        border-radius:50%;
-        background:var(--lime);
-        color:var(--ink);
-        border:none;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        flex-shrink:0;
-        cursor:pointer;
-        transition: transform .25s var(--ease);
-      }
-      .search-bar-form button:hover{ transform:scale(1.08) rotate(8deg); }
-      .search-bar-form button svg{ width:16px; height:16px; }
-
-      /* ---- Results head ---- */
+      /* ---- Results head (single, non-conflicting rule) ---- */
       .search-hero{
-        padding:48px 0 8px;
+        padding:36px 0 12px;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
+        align-items:flex-end;
+        gap:18px;
+      }
+      .search-hero-text{
+        display:flex;
+        flex-direction:column;
+        gap:8px;
       }
       .search-hero .eyebrow-sm{
         display:inline-flex;
@@ -104,21 +43,25 @@
         font-family:'Bricolage Grotesque', sans-serif;
         font-size:clamp(26px, 3.2vw, 38px);
         font-weight:800;
-        margin:12px 0 8px;
+        margin:0;
         letter-spacing:-0.02em;
         color:var(--cream);
       }
       .search-hero h2 .query1{ color:var(--lime); font-style:italic; }
       .search-hero p{
+        margin:0;
         color:var(--cream-dim);
         font-size:14.5px;
+        white-space:nowrap;
       }
       .search-hero .length{ color:var(--cream); font-weight:700; }
 
-      /* ---- Product grid entrance polish ---- */
+      /* ---- Product grid ---- */
       .products-grid{
-        margin-top:34px;
-  
+        margin-top:24px;
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:28px;
       }
       .product-card{
         opacity:0;
@@ -198,13 +141,25 @@
       }
       @keyframes spinRotate{ to{ transform:rotate(360deg); } }
 
+      @media (max-width:1024px){
+        .products-grid{
+          grid-template-columns:repeat(2,minmax(0,1fr));
+        }
+      }
       @media (max-width:760px){
-        .search-topbar .wordmark{ font-size:20px; }
-        .search-bar-form{ max-width:none; }
+        .search-form{ max-width:none; }
+      }
+      @media (max-width:660px){
+        .products-grid{
+          grid-template-columns:1fr;
+        }
+        .search-hero{
+          flex-direction:column;
+          align-items:flex-start;
+        }
       }
       @media (max-width:520px){
-        .search-topbar .wrap{ flex-wrap:wrap; gap:12px; }
-        .search-bar-form{ order:3; width:100%; }
+        .search-form{ order:3; width:100%; }
       }
     </style>
   </head>
@@ -238,33 +193,67 @@
           >
         </div>
         <div class="topstrip-links">
-      <a href="index.html">Sell on ZestCart</a>
-      <a href="index.html">Track Order</a>
-      <a href="index.html">Help</a>
+          <a href="sell-on-zestcart.html">Sell on ZestCart</a>
+          <a href="track-order.html">Track Order</a>
+          <a href="contact-us.html">Help</a>
+        </div>
       </div>
     </div>
 
-    <div class="search-topbar">
+    <header class="site">
       <div class="wrap">
-        <a href="index.html" class="logo">
-          <span class="wordmark">Zest<span class="zest">Cart</span></span>
-        </a>
-        <form class="search-bar-form" action="./search.html" method="GET">
-          <input type="text" name="q" placeholder="Search for products, brands and more..." />
-          <button type="submit" aria-label="Search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </button>
-        </form>
+        <div class="nav-row">
+          <a href="index.html" class="logo">
+            <span class="wordmark">Zest<span class="zest">Cart</span></span>
+          </a>
+          <form class="search-form" action="./search.html" method="GET">
+            <select class="all-pro" onchange="goToPage(this)">
+              <option value="">All</option>
+            </select>
+            <input type="text" name="q" placeholder="Search for products, brands and more..." />
+            <button type="submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+          </form>
+          <nav class="nav-actions">
+            <a href="./wishlist.html" class="nav-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              <span class="label">Wishlist</span>
+            </a>
+            <a href="index.html" class="nav-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+              <span class="label">Account</span>
+            </a>
+            <a href="./cart.html" class="nav-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
+              <span class="label">Cart</span>
+              <span class="badge"></span>
+            </a>
+          </nav>
+        </div>
+        <div class="cat-row">
+          <a href="#products1" class="hot">Today's Deals</a>
+          <span class="divider"></span>
+          <a href="category.html?name=beauty">Beauty</a>
+          <a href="category.html?name=fragrance">Fragrance</a>
+          <a href="category.html?name=sports-accessories">Sports</a>
+          <a href="category.html?name=sunglasses">SunGlasses</a>
+          <a href="category.html?name=groceries">Grocery</a>
+          <a href="category.html?name=furniture">Furniture</a>
+          <a href="category.html?name=home-decoration">Home Decoration</a>
+        </div>
       </div>
-    </div>
+    </header>
 
     <section class="featured-products">
       <div class="wrap">
         <div class="search-hero">
-          <span class="eyebrow-sm"
-            ><span class="bar"></span> Search results</span
-          >
-          <h2>Showing results for "<span class="query1"></span>"</h2>
+          <div class="search-hero-text">
+            <span class="eyebrow-sm"
+              ><span class="bar"></span> Search results</span
+            >
+            <h2>Showing results for "<span class="query1"></span>"</h2>
+          </div>
           <p>
             <span class="length">0</span> products found matching your search.
           </p>
@@ -360,7 +349,7 @@
       queryCon.innerText = query;
 
       // keep the search bar in sync with the current query
-      const searchInput = document.querySelector('.search-bar-form input[name="q"]');
+      const searchInput = document.querySelector('.search-form input[name="q"]');
       if (searchInput && query) searchInput.value = query;
 
       let data;
