@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-  <link rel="stylesheet" href="./css/home.css">
-  <link rel="stylesheet" href="./css/products.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sell on ZestCart — ZestCart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="./css/home.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <div class="topstrip">
+<div class="topstrip">
   <div class="wrap">
     <div class="strip-marquee" id="marquee">
       <span><span class="dot"></span>Free delivery across Lahore on orders over Rs. 2,000</span>
@@ -22,29 +21,28 @@
     </div>
     <div class="topstrip-links">
       <a href="index.html">Sell on ZestCart</a>
-      <a href="index.html">Track Order</a>
-      <a href="index.html">Help</a>
+      <a href="track-order.html">Track Order</a>
+      <a href="contact-us.html">Help</a>
     </div>
   </div>
 </div>
- 
 <header class="site">
   <div class="wrap">
     <div class="nav-row">
       <a href="index.html" class="logo">
         <span class="wordmark">Zest<span class="zest">Cart</span></span>
       </a>
- 
       <form class="search-form" onsubmit="return false;">
-        
+        <select class="all-pro" onchange="goToPage(this)">
+          <option value="">All</option>
+        </select>
         <input type="text" placeholder="Search for products..." class="search-input">
         <button aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
       </form>
- 
       <nav class="nav-actions">
-        <a href="wishlist.html" class="nav-action">
+        <a href="./wishlist.html" class="nav-action">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
           <span class="label">Wishlist</span>
         </a>
@@ -52,15 +50,15 @@
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
           <span class="label">Account</span>
         </a>
-        <a href="cart.html" class="nav-action">
+        <a href="./cart.html" class="nav-action">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
           <span class="label">Cart</span>
-          <span class="badge">3</span>
+          <span class="badge"></span>
         </a>
       </nav>
     </div>
- <div class="cat-row">
-      <a href="index.html#products1" class="hot">Today's Deals</a>
+    <div class="cat-row">
+      <a href="#products1" class="hot">Today's Deals</a>
       <span class="divider"></span>
       <a href="category.html?name=beauty">Beauty</a>
       <a href="category.html?name=fragrance">Fragrance</a>
@@ -72,91 +70,11 @@
     </div>
   </div>
 </header>
- 
-<section class="page-head">
-  <div class="wrap">
-    <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>All Products</span></div>
-    <h1>All Products</h1>
-    
-  </div>
-</section>
- 
-<section class="products-page">
-  <div class="wrap products-layout">
- 
-    <aside class="filters-sidebar">
- 
-      <div class="filter-live-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" placeholder="Search products..." class="search">
-      </div>
- 
-      <div class="filter-block">
-        <div class="filter-block-head"><h3>Categories</h3></div>
-        <div class="filter-options cat-list" >
-          
-          
-        </div>
-      </div>
- 
-      <div class="filter-block">
-        <div class="filter-block-head"><h3>Price Range</h3></div>
-       
-        <div class="price-inputs">
-          <div class="price-input-box">
-            <span>$</span>
-            <input type="number" placeholder="0" class="price-min-num range-min">
-          </div>
-          <span class="price-sep">—</span>
-          <div class="price-input-box">
-            <span>$</span>
-            <input type="number" placeholder="100,000" class="price-max-num range-max">
-          </div>
-         
-        </div>
-         <p style="color: grey; font-size: 13px;">Press Enter to filter</p>
-      </div>
- 
-      <div class="filter-block">
-        <div class="filter-block-head"><h3>Rating</h3></div>
-        <div class="filter-options">
-          <label class="check-opt rating-opt"><input type="radio" name="rating" class="rating-checkbox" value="5"><span class="mark"></span><span class="stars-fixed">★★★★★</span><span class="rate-label">& up</span></label>
-          <label class="check-opt rating-opt"><input type="radio" name="rating" class="rating-checkbox" value="4"><span class="mark"></span><span class="stars-fixed">★★★★<em class="dim">★</em></span><span class="rate-label">& up</span></label>
-          <label class="check-opt rating-opt"><input type="radio" name="rating" class="rating-checkbox" value="3"><span class="mark"></span><span class="stars-fixed">★★★<em class="dim">★★</em></span><span class="rate-label">& up</span></label>
-        </div>
-      </div>
-
-      <div class="filter-block">
-        <div class="filter-block-head"><h3>Availability</h3></div>
-        <div class="filter-options">
-          <label class="check-opt"><input type="checkbox" class="stock-checkbox" value="in"><span class="mark"></span>In Stock </label>
-          <label class="check-opt"><input type="checkbox" class="stock-checkbox" value="out"><span class="mark"></span>Out Of Stock</label>
-        </div>
-      </div>
- 
-      <div class="filter-block">
-        <div class="filter-block-head"><h3>Discount</h3></div>
-        <div class="filter-options">
-          <label class="check-opt"><input type="checkbox" class="discount-checkbox" value="10"><span class="mark"></span>10% or more</label>
-          <label class="check-opt"><input type="checkbox" class="discount-checkbox" value="20"><span class="mark"></span>20% or more</label>
-          <label class="check-opt"><input type="checkbox" class="discount-checkbox" value="30"><span class="mark"></span>30% or more</label>
-        </div>
-      </div>
- 
-      <button class="clear-filters-btn">Clear All Filters</button>
-    </aside>
-    <div class="products-main">
-      <div class="products-toolbar">       
-      </div>
- 
-      <div class="products-grid">
-
-      </div>
-
-    </div>
-  </div>
-</section>
- 
+<main class="wrap" style="padding:40px;max-width:760px;margin:0 auto;">
+  <h1>Sell on ZestCart</h1>
+  <p>Join ZestCart as a seller and reach thousands of customers with your products.</p>
+  <p><a href="index.html">Back to Home</a></p>
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -198,7 +116,5 @@
     </div>
   </div>
 </footer>
-<script src="./js/products.js"></script>
-<script src="./js/cart.js"></script>
 </body>
 </html>

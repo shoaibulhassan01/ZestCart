@@ -55,7 +55,7 @@ async function renderProducts(){
                           ${val.stock > 0 ? "In Stock" : "Out of Stock"}
                         </span>
                     </div>
-                    <button class="cart-btn">
+                    <button class="cart-btn" data-id="${val.id}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/>
                             <circle cx="9.5" cy="21" r="1.2"/>

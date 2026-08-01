@@ -323,33 +323,23 @@
             </div>
           </div>
           <div class="footer-col">
-            <h4>Shop</h4>
-            <ul>
-              <li><a href="#">Electronics</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Home & Living</a></li>
-              <li><a href="#">Beauty</a></li>
-              <li><a href="#">Today's Deals</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
             <h4>Customer Service</h4>
             <ul>
-              <li><a href="#">Track Order</a></li>
-              <li><a href="#">Returns & Refunds</a></li>
-              <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="track-order.html">Track Order</a></li>
+              <li><a href="returns-refunds.html">Returns & Refunds</a></li>
+              <li><a href="shipping-info.html">Shipping Info</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+              <li><a href="contact-us.html">Contact Us</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Company</h4>
             <ul>
-              <li><a href="#">About ZestCart</a></li>
-              <li><a href="#">Sell on ZestCart</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><a href="about.html">About ZestCart</a></li>
+              <li><a href="sell-on-zestcart.html">Sell on ZestCart</a></li>
+              <li><a href="careers.html">Careers</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-of-service.html">Terms of Service</a></li>
             </ul>
           </div>
         </div>
@@ -425,7 +415,7 @@
                           ${val.stock > 0 ? "In Stock" : "Out of Stock"}
                         </span>
                     </div>
-                    <button class="cart-btn">
+                    <button class="cart-btn" data-id="${val.id}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/>
                             <circle cx="9.5" cy="21" r="1.2"/>
@@ -459,5 +449,6 @@
 
       main();
     </script>
+    <script src="./js/cart.js"></script>
   </body>
 </html>

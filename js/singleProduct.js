@@ -69,7 +69,7 @@ async function renderProduct() {
             <input type="number" id="qtyInput" value="${data.minimumOrderQuantity}" min="1">
             <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
           </div>
-          <button class="cart-btn" id="addToCartBtn">
+          <button class="cart-btn" id="addToCartBtn" data-id="${data.id}">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="21" r="1.4"/><circle cx="17.5" cy="21" r="1.4"/></svg>
             Add To Cart
           </button>
