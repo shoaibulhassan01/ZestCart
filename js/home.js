@@ -160,7 +160,7 @@ async function renderProducts() {
                           ${val.stock > 0 ? "In Stock" : "Out of Stock"}
                         </span>
                     </div>
-                    <button class="cart-btn">
+                    <button class="cart-btn" data-id=${val.id}>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/>
                             <circle cx="9.5" cy="21" r="1.2"/>
@@ -185,6 +185,8 @@ async function getFeaturedProducts() {
 async function main() {
   await fetchProducts();
   await getFeaturedProducts();
+  await addCart();
+  showQuantity()
   addWishList();
   singleProduct();
   goToPage();
@@ -205,6 +207,8 @@ loadBtn.addEventListener("click", () => {
 
   renderProducts();
   addWishList();
+  addCart();
+  
 });
 
 const searchInput = document.querySelector(".search-input");
@@ -248,14 +252,12 @@ function goToPage(select) {
   }
 }
 
-
-
 function addWishList() {
   const wishlistBtn = document.querySelectorAll(".wishlist-btn");
 
   wishlistBtn.forEach((e) => {
     e.addEventListener("click", () => {
-     showToast("✅ Product added to wishlist");
+      showToast("✅ Product added to wishlist");
       let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       let flag = true;
       for (let i = 0; i < wishlist.length; i++) {
@@ -272,15 +274,49 @@ function addWishList() {
   });
 }
 
+function showToast(message) {
+  console.log("Show");
+  const toast = document.getElementById("toast");
 
-function showToast(message){
-  console.log("Show")
-    const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
 
-    toast.textContent = message;
-    toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
 
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2000);
+let product = {};
+async function addCart() {
+  let cartBtn = document.querySelectorAll(".cart-btn");
+  cartBtn.forEach((e) => {
+    e.addEventListener("click", () => {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existingProduct = cart.find((item) => item.id == e.dataset.id);
+      console.log(existingProduct)
+      if (existingProduct) {
+        existingProduct.quantity++;
+      } else {
+        cart.push({
+          id: e.dataset.id,
+          quantity: 1,
+        });
+      }
+      showQuantity()
+      console.log(cart)
+      localStorage.setItem("cart", JSON.stringify(cart));
+      showQuantity()
+    });
+  });
+}
+
+async function showQuantity(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const totalQuantity = cart.reduce((total, item) => {
+    return total + item.quantity;
+}, 0);
+
+document.querySelector(".badge").textContent = totalQuantity;
+
 }
