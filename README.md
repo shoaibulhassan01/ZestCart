@@ -1,49 +1,69 @@
-Vanilla JavaScript E-Commerce Website
+# Vanilla JavaScript E-Commerce Website
 
-A modern, responsive, and fully functional E-Commerce website built from scratch using HTML, CSS, and Vanilla JavaScript—without any frameworks or libraries.
+A modern, responsive, and fully functional e-commerce website built entirely with **HTML**, **CSS**, and **Vanilla JavaScript**. The project focuses on creating a realistic online shopping experience while demonstrating core JavaScript concepts such as DOM manipulation, event handling, dynamic rendering, and local storage.
 
-This project focuses on creating a realistic online shopping experience while strengthening core JavaScript concepts such as DOM manipulation, Local Storage, modular code organization, event handling, and dynamic UI updates.
+## Features
 
-✨ Features
-🏠 Modern & Responsive Landing Page
-🔍 Product Search
-📂 Category Filtering
-↕️ Product Sorting
-📄 Product Details Page
-❤️ Wishlist (Stored in Local Storage)
-🛒 Shopping Cart
-➕ Increase/Decrease Product Quantity
-🗑️ Remove Items from Cart
-💾 Persistent Data with Local Storage
-📱 Fully Responsive Design
-🎨 Smooth UI & Interactive Animations
+* Responsive landing page
+* Product listing
+* Product search
+* Category filtering
+* Product sorting
+* Product details page
+* Shopping cart
+* Wishlist
+* Quantity management
+* Remove items from cart
+* Persistent cart and wishlist using Local Storage
+* Responsive design across different screen sizes
 
-🛠️ Built With
-HTML5
-CSS3
-Vanilla JavaScript (ES6)
+## Tech Stack
 
-🎯 Learning Objectives
+* HTML5
+* CSS3
+* Vanilla JavaScript (ES6)
 
-This project was built to strengthen understanding of:
+## Demo
+https://shoaibulhassan01.github.io/ZestCart/
 
-DOM Manipulation
-Event Handling
-Local Storage
-Dynamic Rendering
-JavaScript Modules
-Array Methods
-Responsive Web Design
-State Management without Frameworks
 
-🌟 Future Improvements
-User Authentication
-Product Reviews
-Payment Gateway Integration
-Order History
-Backend API Integration
-Admin Dashboard
-Dark Mode
-Product Recommendations
+## Installation
 
-If you found this project helpful, consider giving it a ⭐ on GitHub!
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-repository.git
+```
+
+Navigate to the project directory and open `index.html` in your browser.
+
+
+## What I Learned
+
+During this project, I gained practical experience with:
+
+* DOM manipulation
+* Event handling
+* Local Storage
+* Dynamic UI rendering
+* JavaScript modules
+* Responsive web design
+* State management without frameworks
+
+## Future Improvements
+
+* User authentication
+* Backend integration
+* Payment gateway
+* Product reviews
+* Order history
+* Admin dashboard
+* Dark mode
+
+## Contributing
+
+Contributions are welcome. Feel free to fork the repository, make improvements, and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
