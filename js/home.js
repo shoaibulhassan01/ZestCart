@@ -320,3 +320,45 @@ const totalQuantity = cart.reduce((total, item) => {
 document.querySelector(".badge").textContent = totalQuantity;
 
 }
+
+const accountBtn = document.getElementById("accountBtn");
+const accountPopup = document.getElementById("accountPopup");
+
+accountBtn.addEventListener("click", () => {
+  accountPopup.classList.toggle("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!accountBtn.contains(e.target) && !accountPopup.contains(e.target)) {
+    accountPopup.classList.remove("open");
+  }
+});
+
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser) {
+    accName.textContent = currentUser.name;
+    accEmail.textContent = currentUser.email;
+    accAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
+
+    document.querySelector(".account-popup-links").innerHTML = `
+        <a href="account.html">My Account</a>
+        <a href="#" id="logoutBtn">Logout</a>
+    `;
+
+    document.querySelector("#logoutBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        location.reload();
+    });
+
+} else {
+    accName.textContent = "Guest User";
+    accEmail.textContent = "Not logged in";
+    accAvatar.textContent = "G";
+
+    document.querySelector(".account-popup-links").innerHTML = `
+        <a href="login.html">Log in</a>
+        <a href="signup.html">Create account</a>
+    `;
+}

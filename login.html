@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account — ZestCart</title>
+  <title>Log In — ZestCart</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap"
@@ -132,7 +132,7 @@
       height: 14px;
     }
 
-    /* ===== SIGNUP SECTION ===== */
+    /* ===== LOGIN SECTION ===== */
     .signup-section {
       position: relative;
       min-height: calc(100vh - 76px);
@@ -345,13 +345,33 @@
       margin-bottom: 20px;
     }
 
+    .field-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
     .field label {
       display: block;
       font-size: 12.5px;
       font-weight: 600;
       color: var(--cream-dim);
-      margin-bottom: 8px;
       letter-spacing: .02em;
+    }
+
+    .field-label-row label {
+      margin-bottom: 0;
+    }
+
+    .forgot-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--lime);
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
     }
 
     .input-shell {
@@ -411,20 +431,6 @@
       stroke: var(--lime);
     }
 
-    .pw-strength {
-      display: flex;
-      gap: 5px;
-      margin-top: 10px;
-    }
-
-    .pw-strength i {
-      flex: 1;
-      height: 3px;
-      border-radius: 3px;
-      background: var(--line);
-      transition: background .3s var(--ease);
-    }
-
     .field-hint {
       font-size: 11.5px;
       color: var(--cream-dim);
@@ -433,30 +439,20 @@
 
     .terms-row {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 10px;
-      margin: 22px 0 26px;
+      margin: 6px 0 26px;
       font-size: 12.5px;
       color: var(--cream-dim);
       line-height: 1.6;
     }
 
     .terms-row input {
-      margin-top: 3px;
       accent-color: var(--lime);
       width: 15px;
       height: 15px;
       flex-shrink: 0;
       cursor: pointer;
-    }
-
-    .terms-row a {
-      color: var(--lime);
-      font-weight: 600;
-    }
-
-    .terms-row a:hover {
-      text-decoration: underline;
     }
 
     .submit-btn {
@@ -591,7 +587,6 @@
       position: fixed;
       top: 20px;
       right: 20px;
-
       color: white;
       padding: 12px 18px;
       border-radius: 8px;
@@ -635,10 +630,10 @@
       <div class="signup-grid">
 
         <div class="signup-side">
-          <span class="eyebrow"><span class="seed">🍋</span> Join Lahore's freshest marketplace</span>
-          <h1>Create your <span class="accent">ZestCart</span> account</h1>
-          <p class="lede">Sign up in a minute to save your wishlist, track orders and unlock member-only deals every
-            week.</p>
+          <span class="eyebrow"><span class="seed">🍋</span> Welcome back to the freshest cart</span>
+          <h1>Log in to your <span class="accent">ZestCart</span> account</h1>
+          <p class="lede">Pick up right where you left off — your cart, your wishlist and your saved deals are all
+            waiting for you.</p>
 
           <div class="perk-list">
             <div class="perk">
@@ -647,8 +642,8 @@
                   <path d="M20 6 9 17l-5-5" />
                 </svg></div>
               <div class="txt">
-                <div class="t">Flat 20% off your first order</div>
-                <div class="d">Applied automatically at checkout</div>
+                <div class="t">Your saved cart stays intact</div>
+                <div class="d">Nothing gets lost between visits</div>
               </div>
             </div>
             <div class="perk">
@@ -659,8 +654,8 @@
                   <circle cx="17.5" cy="21" r="1.4" />
                 </svg></div>
               <div class="txt">
-                <div class="t">Track every order in real time</div>
-                <div class="d">From packed to delivered, always visible</div>
+                <div class="t">Continue tracking your orders</div>
+                <div class="d">Pick up live updates instantly</div>
               </div>
             </div>
             <div class="perk">
@@ -670,8 +665,8 @@
                     d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" />
                 </svg></div>
               <div class="txt">
-                <div class="t">Save items to your wishlist</div>
-                <div class="d">Never lose track of what you love</div>
+                <div class="t">Your wishlist, right where you left it</div>
+                <div class="d">Every saved item is still there</div>
               </div>
             </div>
           </div>
@@ -679,23 +674,11 @@
 
         <div class="signup-card">
           <div class="card-head">
-            <h2>Create an account</h2>
-            <p>Already have one? <a href="login.html">Log in instead</a></p>
+            <h2>Welcome back</h2>
+            <p>New to ZestCart? <a href="signup.html">Create an account</a></p>
           </div>
 
-          <form id="signupForm" novalidate>
-
-            <div class="field" id="nameField">
-              <label for="name">Full name</label>
-              <div class="input-shell">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-                </svg>
-                <input type="text" id="name" placeholder="e.g. Ayesha Khan" autocomplete="name" required>
-              </div>
-              <div class="err-msg">Please enter your full name.</div>
-            </div>
+          <form id="loginForm" novalidate>
 
             <div class="field" id="emailField">
               <label for="email">Email address</label>
@@ -710,13 +693,16 @@
             </div>
 
             <div class="field" id="passwordField">
-              <label for="password">Password</label>
+              <div class="field-label-row">
+                <label for="password">Password</label>
+                <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+              </div>
               <div class="input-shell">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="4" y="10" width="16" height="10" rx="2" />
                   <path d="M8 10V7a4 4 0 0 1 8 0v3" />
                 </svg>
-                <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password"
+                <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password"
                   required>
                 <span class="toggle-eye" id="toggleEye">
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -726,19 +712,16 @@
                   </svg>
                 </span>
               </div>
-              <div class="pw-strength"><i></i><i></i><i></i><i></i></div>
-              <div class="field-hint">Use 8+ characters with a mix of letters and numbers.</div>
-              <div class="err-msg">Password must be at least 8 characters.</div>
+              <div class="err-msg">Please enter your password.</div>
             </div>
 
             <label class="terms-row">
-              <input type="checkbox" id="terms" required>
-              <span>I agree to ZestCart's <a href="terms-of-service.html">Terms of Service</a> and <a
-                  href="privacy-policy.html">Privacy Policy</a>.</span>
+              <input type="checkbox" id="remember">
+              <span>Keep me signed in on this device</span>
             </label>
 
             <button class="submit-btn">
-              Create account
+              Log in
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
                 stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -753,100 +736,62 @@
     </div>
   </section>
 
-  <script>
+  <div id="toast" class="toast">Logged in successfully</div>
+<script>
+    const form = document.getElementById("loginForm");
 
-    function signup() {
-      const name = document.querySelector("#name")
-      const email = document.querySelector("#email")
-      const pswrd = document.querySelector("#password")
-      const submitBtn = document.querySelector(".submit-btn");
-      submitBtn.addEventListener("click", (e) => {
-        e.preventDefault();
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
 
-        let users = JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        let flag = true;
+    const user = users.find(u =>
+        u.email === email && u.password === password
+    );
 
-          if (name.value == "" || email.value == "" || password.value == "") {
-          showToastE("All fields are required")
-          flag = false;
-          return 
-        }
+    if (user) {
 
-         if (!email.value.includes("@") || !email.value.includes(".")) {
-          showToastE("Please enter a valid email");
-          flag = false;
-          return 
-        }
+        // Login user save
+        localStorage.setItem("currentUser", JSON.stringify(user));
 
-        if (password.value.length < 8) {
-          showToastE("Password must be at least 8 characters");
-          flag = false;
-          return 
-        }
+        showToast("Login Successful!");
 
-        for (let i = 0; i < users.length; i++) {
-          if (email.value == users[i].email) {
-            flag = false;
-            showToastE("Email already exists");
-            return
-          }
-        }
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1200);
 
-        if (flag == true) {
-          users.push({
-            id: Date.now(),
-            name: name.value,
-            email: email.value,
-            password: pswrd.value
-          })
-
-          localStorage.setItem("users", JSON.stringify(users))
-          name.value = "";
-          email.value = "";
-          pswrd.value = "";
-          showToastS("Account Created Succusfully")
-          setTimeout(() => {
-    window.location.href = "login.html";
-}, 1500);
-        }
-      })
+    } else {
+        showToastE("Invalid Email or Password");
     }
+});
 
-    signup();
+function showToast(message) {
+    const toast = document.getElementById("toast");
 
-    function showToastE(message) {
+    toast.textContent = message;
+    toast.style.background = "#16a34a";
+    toast.classList.add("show");
 
-      const toast = document.getElementById("toast");
-
-      toast.textContent = message;
-      toast.classList.add("show");
-      toast.style.backgroundColor = "#ff3333";
-
-      setTimeout(() => {
+    setTimeout(() => {
         toast.classList.remove("show");
-      }, 2000);
-    }
+    }, 2000);
+}
 
-    function showToastS(message) {
+function showToastE(message) {
+    const toast = document.getElementById("toast");
 
-      const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.style.background = "#ef4444";
+    toast.classList.add("show");
 
-      toast.textContent = message;
-      toast.classList.add("show");
-      toast.style.backgroundColor = "#008000";
-
-
-      setTimeout(() => {
+    setTimeout(() => {
         toast.classList.remove("show");
-      }, 2000);
-    }
-
-
-  </script>
-  <div id="toast" class="toast">Product added to wishlist</div>
-
+    }, 2000);
+}
+</script>
 </body>
 
 </html>

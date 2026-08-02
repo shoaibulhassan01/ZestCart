@@ -1316,3 +1316,96 @@ h3{
 .toast.show{
     opacity: 1;
 }
+
+.account-wrap {
+  position: relative;
+}
+
+.account-popup {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  width: 260px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, .6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
+  z-index: 200;
+}
+
+.account-popup::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  opacity: .6;
+}
+
+.account-popup.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.account-popup-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.avatar-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--lime-dim);
+  color: var(--lime);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.acc-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.acc-email {
+  font-size: 12px;
+  color: var(--cream-dim);
+  margin-top: 2px;
+}
+
+.account-popup-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 14px;
+}
+
+.account-popup-links a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream-dim);
+  padding: 10px 8px;
+  border-radius: 10px;
+  transition: background .2s var(--ease), color .2s var(--ease);
+}
+
+.account-popup-links a:hover {
+  background: var(--ink-2);
+  color: var(--lime);
+}
